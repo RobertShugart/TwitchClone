@@ -14,7 +14,7 @@ class StreamCreate extends React.Component {
 
   render() {
     return (
-      <form>
+      <form className="ui form">
         {/* Field is apart of redux-form, it's some type of Field to get input from the user  */}
         <Field name="title" component={this.renderInput} label="Enter Title" />
         <Field name="description" component={this.renderInput} label="Enter Description" />
