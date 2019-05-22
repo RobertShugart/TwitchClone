@@ -6,7 +6,6 @@ import {
   DELETE_STREAM,
   EDIT_STREAM
 } from '../actions/types';
-import { stat } from 'fs';
 
 export default (state = {}, action) => {
   switch (action.type) {
