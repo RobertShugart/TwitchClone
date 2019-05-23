@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchStreams } from '../../actions';
-import { isTSIndexSignature } from '@babel/types';
+import { Link } from 'react-router-dom';
 
 
 
@@ -41,7 +41,15 @@ class StreamList extends React.Component {
   }
 
   renderCreate() {
-    if (isSigmedIn)
+    if (this.props.isSignedIn) {
+      return (
+        <div style={{ textAlign: 'right' }}>
+          <Link to="/streams/new" className="ui button primary">
+            Create Stream
+          </Link>
+        </div>
+      );
+    }
   }
 
   render() {
@@ -50,6 +58,7 @@ class StreamList extends React.Component {
         <h2>Streams</h2>
         <div className="ui celled list">
           {this.renderList()}
+          {this.renderCreate()}
         </div>
       </div>
     );
@@ -61,7 +70,7 @@ const mapStateToProps = (state) => {
   return {
     streams: Object.values(state.streams),
     currentUserId: state.auth.userId,
-    isSignedIn: state.auth.isSignedIn;
+    isSignedIn: state.auth.isSignedIn
   };
 };
 
