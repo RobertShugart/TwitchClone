@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { fetchStreams } from '../../actions';
+import { isTSIndexSignature } from '@babel/types';
 
 
 
@@ -39,6 +40,10 @@ class StreamList extends React.Component {
     });
   }
 
+  renderCreate() {
+    if (isSigmedIn)
+  }
+
   render() {
     return (
       <div>
@@ -55,7 +60,8 @@ class StreamList extends React.Component {
 const mapStateToProps = (state) => {
   return {
     streams: Object.values(state.streams),
-    currentUserId: state.auth.userId
+    currentUserId: state.auth.userId,
+    isSignedIn: state.auth.isSignedIn;
   };
 };
 
